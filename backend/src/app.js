@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const authRoutes = require('./routes/auth.routes');
+const errorHandler = require('./middleware/error.middleware')
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use('/auth', authRoutes);
+app.use(errorHandler)
 
 app.get('/', (req, res) => {
   res.send('API Running ');

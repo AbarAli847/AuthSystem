@@ -1,15 +1,14 @@
-const zod = require('zod')
+const  z  = require("zod");
 
-const registerSchema = zod.object({
-    name: zod.string().min(3,'Name must be atleast three characters'),
-    email: zod.string().email('Invalid email'),
-    password: zod.string.min(6,'password must have atleast six character')
-})
+const registerSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  email: z.string().email("Invalid email format"),
+  password: z.string().min(6, "Password must have at least 6 characters"),
+});
 
+const loginSchema = z.object({
+  email: z.string().email("Invalid email format"),
+  password: z.string().min(6, "Password must have at least 6 characters"),
+});
 
-const loginSchema = zod.object({
-    email: zod.string().email('Invalid email address'),
-    password: zod.string.min(6,'password must have atleast six character')
-})
-
-module.exports = {registerSchema, loginSchema}
+module.exports = { registerSchema, loginSchema };

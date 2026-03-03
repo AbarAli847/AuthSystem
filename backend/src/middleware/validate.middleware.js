@@ -1,13 +1,13 @@
-const validate =(schema) =>(req, res, next) =>{
-    try {
-        schema.parse(req.body)
-        next();
-    } catch (error) {
-        return res.status(400).json({
-            success: false,
-            messsage: error.error[0].messsage
-        })    
-    }
-}
+const validate = (schema) => (req, res, next) => {
+  try {
+    schema.parse(req.body);
+    next();
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.issues[0].message,
+    });
+  }
+};
 
-module.exports = validate
+module.exports = validate;
