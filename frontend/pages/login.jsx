@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-// import API from "../lib/axios";
+import API from "../lib/axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
 

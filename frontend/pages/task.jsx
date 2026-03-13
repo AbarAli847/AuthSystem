@@ -1,10 +1,10 @@
-
+'use client'
 
 import { useEffect, useState } from "react";
-// import API from "../lib/axios";
-// import ProtectedRoute from "../components/ProtectedRoute";
+import API from "../lib/axios";
+import ProtectedRoute from "../components/ProtectedRoute";
 
-function  task() {
+function task() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({ title: "", description: "" });
 
@@ -57,7 +57,6 @@ function  task() {
     <div className="max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-semibold mb-4">Tasks</h1>
 
-      {/* Add Task Form */}
       <form onSubmit={addTask} className="mb-4 flex flex-col gap-2">
         <input
           type="text"
@@ -79,7 +78,7 @@ function  task() {
           className="w-full border rounded p-2"
         />
 
-        <button
+        <button 
           type="submit"
           className="self-start bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
         >
@@ -87,7 +86,6 @@ function  task() {
         </button>
       </form>
 
-      {/* Task List */}
       <ul className="space-y-2">
         {tasks.map((task) => (
           <li
@@ -101,9 +99,7 @@ function  task() {
                   - {task.status}
                 </span>
               </p>
-              <p className="text-sm text-gray-600">
-                {task.description}
-              </p>
+              <p className="text-sm text-gray-600">{task.description}</p>
             </div>
 
             <div className="flex gap-2">
@@ -128,5 +124,4 @@ function  task() {
   );
 }
 
-// export default ProtectedRoute(task);
-export default (task);
+export default ProtectedRoute(task);

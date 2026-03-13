@@ -1,4 +1,4 @@
-import register from '../pages/register'
+// import register from '../pages/register'
 import React from 'react'
 
 const page = () => {
@@ -10,7 +10,7 @@ const page = () => {
    <div className='flex text-center justify-center font-bold text-5xl text-amber-300'>
     <h2>I'm a software Engineer</h2>
    </div> */}
-   <register/>
+   {/* <register/> */}
 
       </>
   )

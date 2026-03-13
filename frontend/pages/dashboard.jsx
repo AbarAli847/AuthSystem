@@ -1,7 +1,9 @@
+"use client";
 
 import { useEffect, useState } from "react";
-// import API from "../lib/axios";
-// import ProtectedRoute from "../components/ProtectedRoute";
+import API from "../lib/axios";
+import ProtectedRoute from "../components/ProtectedRoute";
+import Link from "next/link";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
@@ -10,7 +12,8 @@ function Dashboard() {
     const fetchUser = async () => {
       try {
         const res = await API.get("/auth/me");
-        setUser(res.data);
+        // console.log(res.data.data); sni
+        setUser(res.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -33,9 +36,16 @@ function Dashboard() {
           <span className="font-semibold">Email:</span> {user.email}
         </p>
       </div>
+      <div className="mt-4">
+        <Link
+          href="/task"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          Go to Tasks
+        </Link>
+      </div>
     </div>
   );
 }
 
-// export default ProtectedRoute(Dashboard);
-export default Dashboard;
+export default ProtectedRoute(Dashboard);
