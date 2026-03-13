@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import API from "../lib/axios";
@@ -11,7 +11,7 @@ function task() {
   const fetchTasks = async () => {
     try {
       const res = await API.get("/tasks");
-      setTasks(res.data);
+      setTasks(res.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -23,6 +23,7 @@ function task() {
 
   const addTask = async (e) => {
     e.preventDefault();
+
     try {
       await API.post("/tasks", newTask);
       setNewTask({ title: "", description: "" });
@@ -62,9 +63,7 @@ function task() {
           type="text"
           placeholder="Title"
           value={newTask.title}
-          onChange={(e) =>
-            setNewTask({ ...newTask, title: e.target.value })
-          }
+          onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
           required
           className="w-full border rounded p-2"
         />
@@ -78,7 +77,7 @@ function task() {
           className="w-full border rounded p-2"
         />
 
-        <button 
+        <button
           type="submit"
           className="self-start bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
         >
@@ -95,9 +94,7 @@ function task() {
             <div>
               <p className="font-semibold">
                 {task.title}{" "}
-                <span className="text-sm text-gray-500">
-                  - {task.status}
-                </span>
+                <span className="text-sm text-gray-500">- {task.status}</span>
               </p>
               <p className="text-sm text-gray-600">{task.description}</p>
             </div>

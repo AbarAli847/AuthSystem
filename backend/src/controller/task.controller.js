@@ -3,7 +3,9 @@ const Task = require('../model/task.model');
 //  Create Task
 exports.createTask = async (req, res) => {
   try {
-    const { title, description, status, userId } = req.body;
+    const { title, description } = req.body;  
+    const status = "pending";  
+    const userId = req.user.id;  
 
     const task = await Task.create({
       title,
@@ -14,14 +16,13 @@ exports.createTask = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: 'Task created successfully',
+      message: "Task created successfully",
       data: task,
     });
-
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Error creating task',
+      message: "Error creating task",
       error: error.message,
     });
   }

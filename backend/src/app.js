@@ -13,7 +13,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use('/auth', authRoutes);
-app.use('tasks', taskRoutes);
+app.use('/tasks', taskRoutes);
 app.use(errorHandler)
 
 app.get('/', (req, res) => {
